@@ -1,4 +1,4 @@
-const CACHE_NAME = 'shopping-list-v11';
+const CACHE_NAME = 'shopping-list-v12';
 const STATIC_ASSETS = [
   '/RememberTheMilk/',
   '/RememberTheMilk/index.html',
