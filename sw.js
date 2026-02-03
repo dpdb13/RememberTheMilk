@@ -1,10 +1,10 @@
-const CACHE_NAME = 'shopping-list-v2';
+const CACHE_NAME = 'shopping-list-v3';
 const STATIC_ASSETS = [
   '/RememberTheMilk/',
   '/RememberTheMilk/index.html',
   '/RememberTheMilk/manifest.json',
-  '/RememberTheMilk/icon-192.png',
-  '/RememberTheMilk/icon-512.png'
+  '/RememberTheMilk/icon-192-v2.png',
+  '/RememberTheMilk/icon-512-v2.png'
 ];
 
 // Instalar: cachear assets estaticos
@@ -27,8 +27,15 @@ self.addEventListener('activate', (event) => {
             .map((name) => caches.delete(name))
         );
       })
-      .then(() => self.clients.claim())
   );
+  self.clients.claim();
+});
+
+// Escuchar mensaje para activarse inmediatamente
+self.addEventListener('message', (event) => {
+  if (event.data && event.data.type === 'SKIP_WAITING') {
+    self.skipWaiting();
+  }
 });
 
 // Fetch: diferentes estrategias segun el tipo de recurso
