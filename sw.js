@@ -1,4 +1,4 @@
-const CACHE_NAME = 'shopping-list-v14';
+const CACHE_NAME = 'shopping-list-v15';
 const STATIC_ASSETS = [
   '/RememberTheMilk/',
   '/RememberTheMilk/index.html',
@@ -27,8 +27,8 @@ self.addEventListener('activate', (event) => {
             .map((name) => caches.delete(name))
         );
       })
+      .then(() => self.clients.claim())
   );
-  self.clients.claim();
 });
 
 // Escuchar mensaje para activarse inmediatamente
